@@ -207,9 +207,9 @@ export default function CurrencyConverter() {
                 </div>
             </div>   
           )}
-         <div className="w-full m-4 ">
+         <div className="w-full m-7 ">
           {convertedAmount && (
-            <p className="text-lg w-full text-center text-xl text-white ">
+            <p className="text-md w-full text-center text-xl text-white ">
               {`${amount}   ${sourceCurrency} = ${convertedAmount}   ${targetCurrency}`}
             </p>       
           )}
