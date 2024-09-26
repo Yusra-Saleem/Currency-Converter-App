@@ -21,7 +21,6 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import ClipLoader from "react-spinners/ClipLoader";
-import Image from "next/image"; // Import Next.js Image component
 
 // Define types
 type ExchangeRates = { [key: string]: number };
@@ -34,17 +33,17 @@ type Currency =
   | "CAD"
   | "PKR"
   | "INR"
-  | "CHF" 
-  | "CNY" 
-  | "NZD" 
-  | "SGD" 
-  | "HKD" 
-  | "NOK" 
-  | "SEK" 
-  | "MXN" 
+  | "CHF"
+  | "CNY"
+  | "NZD"
+  | "SGD"
+  | "HKD"
+  | "NOK"
+  | "SEK"
+  | "MXN"
   | "BRL"
-  | "RUB" 
-  | "ZAR"; 
+  | "RUB"
+  | "ZAR";
 
 // Currency flags mapping
 const currencyFlags: { [key in Currency]: string } = {
@@ -76,7 +75,7 @@ export default function CurrencyConverter() {
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [convertedAmount, setConvertedAmount] = useState<string>("0.00");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null); // Error state
 
   // Fetch exchange rates on mount
   useEffect(() => {
@@ -90,7 +89,7 @@ export default function CurrencyConverter() {
         const data = await response.json();
         setExchangeRates(data.conversion_rates);
       } catch (error) {
-        setError("Error fetching exchange rates.");
+        setError("Error fetching exchange rates."); // Handle error
       } finally {
         setLoading(false);
       }
@@ -124,12 +123,12 @@ export default function CurrencyConverter() {
   const swapCurrencies = () => {
     setSourceCurrency(targetCurrency);
     setTargetCurrency(sourceCurrency);
-    calculateConvertedAmount(); // Optionally, recalculate the converted amount after swapping
+    calculateConvertedAmount();
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[url('https://media.istockphoto.com/id/1145626155/photo/3d-render-neon-light-abstract-background-round-portal-rings-circles-virtual-reality.jpg?s=612x612&w=0&k=20&c=j1dB5brpHkaosjDBhDcJOtcA7X0TqtWIs7CqPAhoFpo=')] bg-no-repeat bg-cover bg-fixed p-3">
-      <Card className="w-full max-w-md p-4 pt-7 space-y-4 bg-transparent backdrop-blur-xl">
+    <div className="flex flex-col items-center justify-center h-screen bg-[url('https://media.istockphoto.com/id/1145626155/photo/3d-render-neon-light-abstract-background-round-portal-rings-circles-virtual-reality.jpg?s=612x612&w=0&k=20&c=j1dB5brpHkaosjDBhDcJOtcA7X0TqtWIs7CqPAhoFpo=')] bg-no-repeat bg-cover bg-fixed  p-3 ">
+      <Card className="w-full max-w-md p-4 pt-7 space-y-4 bg-transparent  backdrop-blur-xl ">
         <CardHeader className="text-center pb-4">
           <CardTitle className="text-[1.3rem] font-bold pb-3 uppercase text-gray-100">
             Currency Converter
@@ -144,11 +143,11 @@ export default function CurrencyConverter() {
               <ClipLoader className="w-6 h-6 text-blue-500" />
             </div>
           ) : error ? (
-            <div className="text-red-500 text-center">{error}</div>
+            <div className="text-red-500 text-center">{error}</div> // Display error if there's any
           ) : (
             <div className="grid gap-8">
               <div>
-                <Label className="mb-4 text-md text-white" htmlFor="amount">
+                <Label className="mb-4 text-md text-white " htmlFor="amount">
                   Enter Amount
                 </Label>
                 <Input
@@ -156,7 +155,7 @@ export default function CurrencyConverter() {
                   placeholder="Amount"
                   value={amount || ""}
                   onChange={handleAmountChange}
-                  className="w-full bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white"
+                  className="w-full bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white "
                   id="amount"
                 />
               </div>
@@ -166,32 +165,31 @@ export default function CurrencyConverter() {
                     value={sourceCurrency}
                     onValueChange={handleSourceCurrencyChange}
                   >
-                    <SelectTrigger className="w-md px-[9px] bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white">
+                    <SelectTrigger className="w-md px-[9px] bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white ">
                       <SelectValue placeholder="USD" />
                     </SelectTrigger>
                     <SelectContent className="h-[200px]">
                       <SelectGroup>
-                        {Object.entries(currencyFlags).map(([currency, flagUrl]) => (
-                          <SelectItem key={currency} value={currency}>
-                            <div className="flex items-center">
-                              <Image
-                                src={flagUrl}
-                                alt={`${currency} flag`}
-                                width={20}
-                                height={20}
-                                className="mr-2"
-                              />
-                              {currency}
-                            </div>
-                          </SelectItem>
-                        ))}
+                        {Object.entries(currencyFlags).map(
+                          ([currency, flagUrl]) => (
+                            <SelectItem key={currency} value={currency}>
+                              <div className="flex items-center">
+                                <img
+                                  src={flagUrl}
+                                  alt={`${currency} flag`}
+                                  className="w-5 h-5 mr-2"
+                                />
+                                {currency}
+                              </div>
+                            </SelectItem>
+                          )
+                        )}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
-
                   {/* Swap Icon */}
                   <div
-                    className="mx-3 cursor-pointer bg-[rgba(255,255,255,0.2)] backdrop-blur-3xl text-md text-white rounded-full p-[6px] border border-white"
+                    className="mx-3 cursor-pointer  bg-[rgba(255,255,255,0.2)] backdrop-blur-3xl text-md text-white rounded-full p-[6px] border border-white"
                     onClick={swapCurrencies}
                   >
                     <svg
@@ -200,35 +198,34 @@ export default function CurrencyConverter() {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M19.13 11.66H.22a.22.22 0 0 0-.22.22v1.62a.22.22 0 0 0 .22.22h16.45l-3.92 4.94a.22.22 0 0 0 .17.35h1.97c.13 0 .25-.06.33-.16l4.59-5.78a.9.9 0 0 0-.7-1.43zM19.78 5.29H3.34L7.26.35A.22.22 0 0 0 7.09 0H5.12a.22.22 0 0 0-.34.16L.19 5.94a.9.9 0 0 0 .68 1.4H19.78a.22.22 0 0 0 .22-.22V5.51a.22.22 0 0 0-.22-.22z"
-                        fill="currentColor"
+                        d="M19.13 11.66H.22a.22.22 0 0 0-.22.22v1.62a.22.22 0 0 0 .22.22h16.45l-3.92 4.94a.22.22 0 0 0 .03.3l1.26.99c.1.08.24.07.32-.03l5.39-6.79a.22.22 0 0 0-.17-.36zM.87 7.34h18.91c.12 0 .22-.1.22-.22V5.5a.22.22 0 0 0-.22-.22H2.32l3.92-4.94A.22.22 0 0 0 6.2.03L4.94-.96C4.84-1.04 4.7-1.03 4.62-.93L.23 5.86a.22.22 0 0 0 .17.36z"
+                        fill="white"
                       />
                     </svg>
                   </div>
-
                   <Select
                     value={targetCurrency}
                     onValueChange={handleTargetCurrencyChange}
                   >
-                    <SelectTrigger className="w-md px-[9px] bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white">
+                    <SelectTrigger className="w-md px-[9px] bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-md text-white ">
                       <SelectValue placeholder="PKR" />
                     </SelectTrigger>
                     <SelectContent className="h-[200px]">
                       <SelectGroup>
-                        {Object.entries(currencyFlags).map(([currency, flagUrl]) => (
-                          <SelectItem key={currency} value={currency}>
-                            <div className="flex items-center">
-                              <Image
-                                src={flagUrl}
-                                alt={`${currency} flag`}
-                                width={20}
-                                height={20}
-                                className="mr-2"
-                              />
-                              {currency}
-                            </div>
-                          </SelectItem>
-                        ))}
+                        {Object.entries(currencyFlags).map(
+                          ([currency, flagUrl]) => (
+                            <SelectItem key={currency} value={currency}>
+                              <div className="flex items-center">
+                                <img
+                                  src={flagUrl}
+                                  alt={`${currency} flag`}
+                                  className="w-5 h-5 mr-2"
+                                />
+                                {currency}
+                              </div>
+                            </SelectItem>
+                          )
+                        )}
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -239,15 +236,17 @@ export default function CurrencyConverter() {
         </CardContent>
         <CardFooter>
           <Button
-            className="w-full bg-blue-500 hover:bg-blue-600 text-md text-white"
             onClick={calculateConvertedAmount}
+            disabled={!amount || loading}
+            className="w-full text-md font-bold bg-[rgba(255,255,255,0.13)] backdrop-blur-3xl text-white"
           >
-            Convert
+            {loading ? "Loading..." : "Convert"}
           </Button>
+          <div className="mt-4 text-center">
+            <p className="text-md font-bold text-white">Converted Amount:</p>
+            <p className="text-md font-bold text-white">{convertedAmount}</p>
+          </div>
         </CardFooter>
-        <div className="text-center text-md text-white">
-          {convertedAmount && `Converted Amount: ${convertedAmount} ${targetCurrency}`}
-        </div>
       </Card>
     </div>
   );
