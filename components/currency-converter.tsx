@@ -75,6 +75,8 @@ export default function CurrencyConverter() {
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>({});
   const [convertedAmount, setConvertedAmount] = useState<string>("0.00");
   const [loading, setLoading] = useState<boolean>(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null); // Error state
 
   // Fetch exchange rates on mount
@@ -194,11 +196,14 @@ export default function CurrencyConverter() {
                   >
                     <svg
                       width="12"
-                      viewBox="0 0 20 19"
+                      viewBox="0 0 20 20"
+                      fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M19.13 11.66H.22a.22.22 0 0 0-.22.22v1.62a.22.22 0 0 0 .22.22h16.45l-3.92 4.94a.22.22 0 0 0 .03.3l1.26.99c.1.08.24.07.32-.03l5.39-6.79a.22.22 0 0 0-.17-.36zM.87 7.34h18.91c.12 0 .22-.1.22-.22V5.5a.22.22 0 0 0-.22-.22H2.32l3.92-4.94A.22.22 0 0 0 6.2.03L4.94-.96C4.84-1.04 4.7-1.03 4.62-.93L.23 5.86a.22.22 0 0 0 .17.36z"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M19.13 12.66H.87a.22.22 0 0 0-.22.22v1.62c0 .12.1.22.22.22h16.45l-3.92 4.94c-.08.1-.07.24.03.32l1.26.99c.08.1.22.1.32.03l5.39-6.79a.22.22 0 0 0-.17-.36zM.87 7.34h18.91c.12 0 .22-.1.22-.22V5.5a.22.22 0 0 0-.22-.22H2.32l3.92-4.94A.22.22 0 0 0 6.2.03L4.94-.96C4.84-1.04 4.7-1.03 4.62-.93L.23 5.86a.22.22 0 0 0 .17.36z"
                         fill="white"
                       />
                     </svg>
