@@ -198,19 +198,34 @@ export default function CurrencyConverter() {
                   </Select>
                 </div>
               </div>
-            </div>
+              <Button type="button" className="w-full bg-gray-100 text-slate-900 font-semibold" onClick={calculateConvertedAmount}>
+                  Get Exchange Rate
+                </Button>
+              <div className="grid grid-cols-[1fr_auto] items-center gap-2 text-gray-200 px-3">
+                  <Label htmlFor="to" className=" text-white text-lg">Converted Amount</Label>
+                  <div className="text-2xl font-bold">{convertedAmount}</div>
+                </div>
+            </div>   
           )}
         </CardContent>
         <CardFooter className="flex justify-between items-center">
-          <Button className="w-full mt-3" onClick={calculateConvertedAmount}>Convert</Button>
+         <div className="w-full">
           {convertedAmount && (
-            <p className="text-lg text-white mt-3">
+            <p className="text-lg w-full text-lg text-white mt-3">
               {`${amount} ${sourceCurrency} = ${convertedAmount} ${targetCurrency}`}
             </p>
+           
           )}
+           </div>
         </CardFooter>
       </Card>
     </div>
+
+
+
+
+
+    
   );
 }
 
