@@ -207,16 +207,16 @@ export default function CurrencyConverter() {
                 </div>
             </div>   
           )}
-        </CardContent>
-        <CardFooter className="flex justify-between items-center">
-         <div className="w-full">
+         <div className="w-full m-4 ">
           {convertedAmount && (
-            <p className="text-lg w-full text-lg text-white mt-3">
-              {`${amount} ${sourceCurrency} = ${convertedAmount} ${targetCurrency}`}
-            </p>
-           
+            <p className="text-lg w-full text-center text-xl text-white ">
+              {`${amount}   ${sourceCurrency} = ${convertedAmount}   ${targetCurrency}`}
+            </p>       
           )}
            </div>
+          </CardContent>
+        <CardFooter className="flex justify-between items-center ">
+          <div className="text-sm text-center  text-white">Made by Yusra Saleem</div>
         </CardFooter>
       </Card>
     </div>
