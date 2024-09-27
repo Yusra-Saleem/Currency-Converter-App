@@ -198,7 +198,7 @@ export default function CurrencyConverter() {
                   </Select>
                 </div>
               </div>
-              <Button type="button" className="w-full bg-gray-100 text-slate-900 font-semibold" onClick={calculateConvertedAmount}>
+              <Button type="button" className="w-full bg-gray-100 text-slate-900 text-lg hover:text-white hover:bg-gray-500 font-semibold" onClick={calculateConvertedAmount}>
                   Get Exchange Rate
                 </Button>
               <div className="grid grid-cols-[1fr_auto] items-center gap-2 text-gray-200 px-3">
